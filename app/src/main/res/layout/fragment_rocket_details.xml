@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="rocketDetails"
+            type="me.spacelaunchnow.model.pojo.RocketDetails" />
+        <variable
+            name="rocketName"
+            type="String" />
+        <variable
+            name="rocketLocation"
+            type="String" />
+        <variable
+            name="rocketStatus"
+            type="String" />
+        <variable
+            name="rocketDateTime"
+            type="String" />
+        <variable
+            name="rocketDescription"
+            type="String" />
+        <variable
+            name="error"
+            type="String" />
+    </data>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_rocket_details_image"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/rocket_detail_image_size"
+            android:scaleType="centerInside"
+            android:visibility="gone"
+            app:loadImage="@{rocketDetails}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+        <TextView
+            android:id="@+id/tv_rocket_details_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/iv_rocket_details_image"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:text="@{rocketName}"
+            android:textColor="@color/colorTextDetails"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/tv_rocket_details_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tv_rocket_details_name"
+            app:layout_constraintStart_toStartOf="@id/tv_rocket_details_name"
+            android:layout_marginTop="10dp"
+            android:text="@{rocketLocation}"
+            android:textColor="@color/colorTextDetails"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/tv_rocket_details_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tv_rocket_details_location"
+            app:layout_constraintStart_toStartOf="@id/tv_rocket_details_name"
+            android:layout_marginTop="10dp"
+            android:text="@{rocketStatus}"
+            android:textColor="@color/colorTextDetails"/>
+
+        <TextView
+            android:id="@+id/tv_rocket_details_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tv_rocket_details_status"
+            app:layout_constraintStart_toStartOf="@id/tv_rocket_details_name"
+            android:layout_marginTop="10dp"
+            android:text="@{rocketDateTime}"
+            android:textColor="@color/colorTextDetails"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/tv_rocket_details_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tv_rocket_details_date"
+            app:layout_constraintStart_toStartOf="@id/tv_rocket_details_name"
+            android:layout_marginTop="10dp"
+            android:text="@{rocketDescription}"
+            android:textColor="@color/colorTextDetails"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/tv_rocket_details_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/error_rocket_details"
+            android:textColor="@color/design_default_color_error"
+            android:textSize="16sp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

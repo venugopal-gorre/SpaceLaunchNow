@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="isLoadingVisible"
+            type="boolean" />
+    </data>
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshRockets"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/loading_projects"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="@string/loading"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                app:visibility="@{isLoadingVisible}"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewRockets"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/list_margin"
+                app:layoutManager="LinearLayoutManager"
+                app:visibility="@{!isLoadingVisible}"
+                tools:context=".view.ui.RocketsListFragment"
+                tools:listitem="@layout/layout_rockets_list_item" />
+        </FrameLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</layout>

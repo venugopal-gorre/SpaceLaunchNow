@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="isLoadingVisible"
+            type="boolean" />
+        <variable
+            name="result"
+            type="me.spacelaunchnow.model.pojo.Result" />
+        <variable
+            name="listener"
+            type="me.spacelaunchnow.view.callback.OnRocketClickListener" />
+    </data>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:visibility="@{isLoadingVisible}"
+            android:gravity="center"
+            android:padding="10dp">
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="@string/loading"
+                android:textSize="18sp"
+                android:layout_gravity="center_vertical"/>
+        </LinearLayout>
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{() ->  listener.onRocketClick(result)}"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="3dp"
+            app:cardUseCompatPadding="true"
+            android:focusable="true"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            app:visibility="@{!isLoadingVisible}">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/rocket_list_image_size"
+                    android:id="@+id/iv_rockets_list_item_image"
+                    android:scaleType="center"
+                    android:src="@drawable/rocket_200"
+                    app:rocketIcon="@{result}"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <!-- This view is for boxing the adjacent views-->
+                <View
+                    android:id="@+id/background"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="@color/colorPrimary"
+                    android:paddingTop="@dimen/text_margin"
+                    app:layout_constraintTop_toBottomOf="@id/iv_rockets_list_item_image"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_rockets_list_item_location"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tv_rockets_list_item_name" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_end="@dimen/text_margin" />
+
+                <TextView
+                    android:id="@+id/tv_rockets_list_item_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/iv_rockets_list_item_image"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/guideline"
+                    android:layout_marginLeft="@dimen/text_margin"
+                    android:layout_marginRight="@dimen/text_margin"
+                    android:paddingTop="@dimen/text_margin"
+                    android:text="@{result.rocket.configuration.name}"
+                    android:textColor="@color/colorText"
+                    android:textSize="20sp"/>
+                <TextView
+                    android:id="@+id/tv_rockets_list_item_location"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_margin"
+                    android:paddingBottom="@dimen/text_margin"
+                    app:layout_constraintTop_toBottomOf="@id/tv_rockets_list_item_name"
+                    app:layout_constraintStart_toStartOf="@id/tv_rockets_list_item_name"
+                    app:layout_constraintEnd_toEndOf="@id/tv_rockets_list_item_name"
+                    android:text="@{result.pad.location.name}"
+                    android:textColor="@color/colorText"
+                    android:textSize="16sp"/>
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/iv_rockets_list_item_country"
+                    app:layout_constraintTop_toTopOf="@id/tv_rockets_list_item_name"
+                    app:layout_constraintTop_toBottomOf="@id/iv_rockets_list_item_image"
+                    app:layout_constraintEnd_toEndOf="@id/guideline"
+                    app:layout_constraintStart_toEndOf="@id/tv_rockets_list_item_name"
+                    android:layout_marginTop="@dimen/text_margin"
+                    android:layout_marginRight="@dimen/text_margin"
+                    android:scaleType="center"
+                    app:countryIcon="@{result}"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+    </FrameLayout>
+</layout>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="text_margin">16dp</dimen>
+    <dimen name="list_margin">8dp</dimen>
+    <dimen name="rocket_list_image_size">256dp</dimen>
+    <dimen name="rocket_splash_image_size">160dp</dimen>
+    <dimen name="rocket_detail_image_size">384dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+</resources>
